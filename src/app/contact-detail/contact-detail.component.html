@@ -1,0 +1,23 @@
+<div class="custom-container mat-elevation-z8">
+  <div class="custom-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <button mat-mini-fab [routerLink]="['/contacts']"><mat-icon>home</mat-icon></button>
+  </div>
+  <mat-card class="custom-card">
+    <mat-card-header>
+      <mat-card-title><h1>{{contact.name}}</h1></mat-card-title>
+      <mat-card-subtitle><mat-icon>fitness_center</mat-icon> {{contact.skill}}</mat-card-subtitle>
+      <mat-card-subtitle><mat-icon class="mail_outline">mail_outline</mat-icon> {{contact.email}}</mat-card-subtitle>
+      <mat-card-subtitle><mat-icon>update</mat-icon> {{contact.create_date | date}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <div class="button-row">
+        <button mat-mini-fab class="edit"[routerLink]="['/contact-edit', contact._id]"><mat-icon>edit</mat-icon></button>
+        <button mat-mini-fab class="delete"(click)="deleteContact(contact._id)"><mat-icon>delete</mat-icon></button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

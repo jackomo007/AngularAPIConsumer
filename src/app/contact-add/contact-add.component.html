@@ -1,0 +1,43 @@
+<div class="custom-container mat-elevation-z8">
+  <div class="custom-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <button mat-mini-fab [routerLink]="['/contacts']"><mat-icon>home</mat-icon></button>
+  </div>
+  <mat-card class="custom-card">
+    <form [formGroup]="contactForm" (ngSubmit)="onFormSubmit(contactForm.value)">
+      <mat-form-field class="custom-full-width">
+        <input matInput placeholder="Contact Name" formControlName="name"
+               >
+        <mat-error>
+          <span *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched">Please enter Contact Name</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="custom-full-width">
+        <input matInput placeholder="Contact Email" formControlName="email"
+               >
+        <mat-error>
+          <span *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched">Please enter Contact Email</span>
+        </mat-error>
+      </mat-form-field><mat-form-field class="custom-full-width">
+        <input matInput placeholder="Contact Skills" formControlName="skill"
+               >
+        <mat-error>
+          <span *ngIf="!contactForm.get('skill').valid && contactForm.get('skill').touched">Please enter Contact skill</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="custom-full-width">
+        <input matInput placeholder="Contact Phone" formControlName="phone"
+               >
+        <mat-error>
+          <span *ngIf="!contactForm.get('phone').valid && contactForm.get('phone').touched">Please enter Contact Phone</span>
+        </mat-error>
+      </mat-form-field>
+      <div class="button-row">
+        <button mat-mini-fab class="submit" type="submit" [disabled]="!contactForm.valid"><mat-icon>save</mat-icon></button>
+      </div>
+    </form>
+  </mat-card>
+</div>
